@@ -5,7 +5,6 @@ module Cms
       def after_sign_in_path_for(resource)
         if resource.class.eql?(Cms::Fortress::User)
           session[:site_id] = resource.site_id
-          #comfy_admin_cms_path
           dashboard_site_path
         else
           begin
@@ -17,9 +16,7 @@ module Cms
       end
 
       def after_sign_out_path_for(resource_or_scope)
-        # request.referrer
         if resource_or_scope.eql?(:cms_fortress_user)
-          # comfy_admin_cms_path
           dashboard_site_path
         else
           begin
@@ -69,14 +66,14 @@ module Cms
               redirect_to cms_fortress_unauthorised_path
               end
             else
-              redirect_to cms_fortress_unauthorised_path #, :alert => ex.message
+              redirect_to cms_fortress_unauthorised_path
             end
           end
 
           protected
           
           def configure_permitted_parameters
-            devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:email, :password, :remember_me, :site_id) }
+            devise_parameter_sanitizer.permit(sign_in: [:email, :password, :remember_me, :site_id])
           end
 
         end

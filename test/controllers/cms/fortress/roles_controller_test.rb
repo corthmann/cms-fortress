@@ -7,7 +7,7 @@ class Cms::Fortress::RolesControllerTest < ActionController::TestCase
     @comfy_cms_site = comfy_cms_sites(:default)
     @cms_fortress_user = cms_fortress_users(:one)
     @cms_fortress_role = cms_fortress_roles(:one)
-    sign_in Cms::Fortress::User, @cms_fortress_user
+    sign_in(@cms_fortress_user)
   end
 
   def test_should_get_index
@@ -23,30 +23,30 @@ class Cms::Fortress::RolesControllerTest < ActionController::TestCase
 
   test "should create cms_fortress_role" do
     assert_difference('Cms::Fortress::Role.count') do
-      post :create, cms_fortress_role: { description: @cms_fortress_role.description, name: @cms_fortress_role.name }
+      post :create, params: {cms_fortress_role: { description: @cms_fortress_role.description, name: @cms_fortress_role.name }}
     end
 
     assert_redirected_to cms_fortress_role_path(assigns(:cms_fortress_role))
   end
 
   test "should show cms_fortress_role" do
-    get :show, id: @cms_fortress_role
+    get :show, params: {id: @cms_fortress_role}
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @cms_fortress_role
+    get :edit, params: {id: @cms_fortress_role}
     assert_response :success
   end
 
   test "should update cms_fortress_role" do
-    put :update, id: @cms_fortress_role, cms_fortress_role: { description: @cms_fortress_role.description, name: @cms_fortress_role.name }
+    put :update, params: {id: @cms_fortress_role, cms_fortress_role: { description: @cms_fortress_role.description, name: @cms_fortress_role.name }}
     assert_redirected_to cms_fortress_role_path(assigns(:cms_fortress_role))
   end
 
   test "should destroy cms_fortress_role" do
     assert_difference('Cms::Fortress::Role.count', -1) do
-      delete :destroy, id: @cms_fortress_role
+      delete :destroy, params: {id: @cms_fortress_role}
     end
 
     assert_redirected_to cms_fortress_roles_path

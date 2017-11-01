@@ -105,7 +105,6 @@ class Cms::Fortress::UsersController < Comfy::Admin::Cms::BaseController
 
   def check_super
     raise CanCan::AccessDenied.new("Your are not authorised to execute this process.") unless current_cms_fortress_user.type.eql?(:super_user)
-    # @super_user = current_cms_fortress_user.type.eql?(:super_user)
   end
 
   def set_user

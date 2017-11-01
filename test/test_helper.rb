@@ -6,6 +6,7 @@ require 'cms-fortress'
 require 'minitest/pride'
 require 'minitest/reporters'
 
+
 # test without creating a test database.
 ActiveRecord::Base.establish_connection(
   :adapter => 'sqlite3',
@@ -21,5 +22,5 @@ class ActiveSupport::TestCase
 end
 
 class ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 end

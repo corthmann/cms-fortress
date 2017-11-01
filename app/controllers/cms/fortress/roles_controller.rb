@@ -1,5 +1,5 @@
 class Cms::Fortress::RolesController < Comfy::Admin::Cms::BaseController
-  before_filter do
+  before_action do
     authorize! :manage, Cms::Fortress::Role
   end
   before_action :set_role, only: [:show, :edit, :update, :destroy, :refresh]
