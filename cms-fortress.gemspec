@@ -23,7 +23,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'comfortable_mexican_sofa', '~> 1.12', '>= 1.12.5'
   s.add_dependency 'devise',                    '~> 4.3'
   s.add_dependency 'cancancan',                 '~> 1.9'
-  s.add_dependency 'delayed_job',               '~> 4'
   s.add_dependency 'aasm',                      '~> 4.0'
 
   s.add_development_dependency 'rdoc'
